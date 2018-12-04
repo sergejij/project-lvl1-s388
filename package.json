@@ -2,7 +2,11 @@
   "name": "sergejij-first-project",
   "version": "1.0.1",
   "description": "This is my first project from Hexlet.",
-  "keywords": "hexlet-frontend",
+  "keywords": [
+    "hexlet",
+    "hexlet-project",
+    "hexlet-project-frontend",
+  ],
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
