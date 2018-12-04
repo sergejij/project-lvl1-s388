@@ -8,7 +8,8 @@
     "hexlet-project-frontend"
   ],
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
     "dist"
@@ -28,7 +29,7 @@
     "url": "https://github.com/sergejij/project-lvl1-s388/issues"
   },
   "homepage": "https://github.com/sergejij/project-lvl1-s388#readme",
-  "devendencies": {
+  "dependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
