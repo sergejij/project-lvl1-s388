@@ -4,4 +4,4 @@
 
 [![Build Status](https://travis-ci.org/sergejij/project-lvl1-s388.svg?branch=master)](https://travis-ci.org/sergejij/project-lvl1-s388)
 
-[![asciicast](https://asciinema.org/a/Tp76TFPtVgwafADQmY6oB3boa.svg)](https://asciinema.org/a/Tp76TFPtVgwafADQmY6oB3boa)
+[![asciicast](https://asciinema.org/a/d0x6Zs2PW62VfLQQkvqXPruYa.svg)](https://asciinema.org/a/d0x6Zs2PW62VfLQQkvqXPruYa)
