@@ -6,30 +6,26 @@ export const userName = () => {
   return name;
 };
 
-const name = readlineSync.question('May I have your name? ');
-export const userAnswer = (win = 1) => {
-  const number = Math.floor((Math.random() * (100 - 1)) + 1);
-  const actual = readlineSync.question(`Question:  ${number} `);
+export const userAnswer = () => {
+  console.log('Welcome to the Brain Games!');
+  console.log('Answer "yes" if number even otherwise answer "no".\n');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!\n`);
 
-  if (win >= 3) {
-    console.log(`Congratulations, ${name}!`);
-    return;
-  }
-
-  if (number % 2 === 0) {
-    if (actual === 'yes') {
-      console.log('Correct!');
-      return userAnswer(win + 1);
+  const iter = (win) => {
+    if (win > 3) {
+      console.log(`Congratulations, ${name}!`);
+      return;
     }
-    console.log(`'no' is wrong answer ;(. Correct answer was 'yes'. \n Let's try again, ${name}!`);
-    return;
-  }
+    const number = Math.floor((Math.random() * (100 - 1)) + 1);
+    const actual = readlineSync.question(`Question:  ${number} `);
 
-  if (number % 2 !== 0) {
-    if (actual === 'no') {
+    const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+    if (actual === correctAnswer) {
       console.log('Correct!');
-      return userAnswer(win + 1);
+      return iter(win + 1);
     }
-    console.log(`'yes' is wrong answer ;(. Correct answer was 'no'. \n Let's try again, ${name}!`);
-  }
+    console.log(`${actual} is wrong answer ;(. Correct answer was ${correctAnswer}. \n Let's try again, ${name}!`);
+  };
+  iter(1);
 };
