@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
 
 export const userName = () => {
+  console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   return name;
@@ -23,7 +24,8 @@ export const userAnswer = () => {
     const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
     if (actual === correctAnswer) {
       console.log('Correct!');
-      return iter(win + 1);
+      iter(win + 1);
+      return;
     }
     console.log(`${actual} is wrong answer ;(. Correct answer was ${correctAnswer}. \n Let's try again, ${name}!`);
   };
