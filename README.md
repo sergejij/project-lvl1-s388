@@ -5,3 +5,5 @@
 [![Build Status](https://travis-ci.org/sergejij/project-lvl1-s388.svg?branch=master)](https://travis-ci.org/sergejij/project-lvl1-s388)
 
 [![asciicast](https://asciinema.org/a/d0x6Zs2PW62VfLQQkvqXPruYa.svg)](https://asciinema.org/a/d0x6Zs2PW62VfLQQkvqXPruYa)
+
+[![asciicast](https://asciinema.org/a/sIpnTEiuVeMPwXivXIS2qUUul.svg)](https://asciinema.org/a/sIpnTEiuVeMPwXivXIS2qUUul)
