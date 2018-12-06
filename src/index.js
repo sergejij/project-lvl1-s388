@@ -20,7 +20,7 @@ export const userAnswer = () => {
       return;
     }
     const numberQuestion = Math.floor((Math.random() * (100 - 1)) + 1);
-    const answer = readlineSync.question(`Question:  ${numberQuestion} `);
+    const answer = readlineSync.question(`Question: ${numberQuestion} \nYour answer: `);
 
     const correctAnswer = numberQuestion % 2 === 0 ? 'yes' : 'no';
     if (answer === correctAnswer) {
@@ -55,7 +55,7 @@ export const calculate = () => {
     const correctAnswerMultiply = number1 * number2;
 
     if (numberOperand === 1) {
-      const answer = readlineSync.question(`Question:  ${number1} + ${number2} `);
+      const answer = readlineSync.question(`Question:  ${number1} + ${number2} \nYour answer: `);
       if (Number.parseInt(answer, 10) === correctAnswerPlus) {
         console.log('Correct!');
         iter(win + 1);
@@ -63,7 +63,7 @@ export const calculate = () => {
       }
       console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswerPlus}. \n Let's try again, ${name}!`);
     } else if (numberOperand === 2) {
-      const answer = readlineSync.question(`Question:  ${number1} - ${number2} `);
+      const answer = readlineSync.question(`Question:  ${number1} - ${number2} \nYour answer: `);
       if (Number.parseInt(answer, 10) === correctAnswerMinus) {
         console.log('Correct!');
         iter(win + 1);
@@ -71,7 +71,7 @@ export const calculate = () => {
       }
       console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswerMinus}. \n Let's try again, ${name}!`);
     } else {
-      const answer = readlineSync.question(`Question:  ${number1} * ${number2} `);
+      const answer = readlineSync.question(`Question:  ${number1} * ${number2} \nYour answer: `);
       if (Number.parseInt(answer, 10) === correctAnswerMultiply) {
         console.log('Correct!');
         iter(win + 1);
