@@ -9,3 +9,12 @@ publish:
 
 lint:
 	npx eslint .
+
+gcd:
+	npx babel-node -- src/bin/brain-gcd.js
+
+even:
+	npx babel-node -- src/bin/brain-even.js
+
+calc:
+		npx babel-node -- src/bin/brain-calc.js
