@@ -1,31 +1,31 @@
 import readlineSync from 'readline-sync';
 import generateNum from '../utils';
 
-const threeTime = 3;
-const userAnswer = () => {
+const stopIfMore = 3;
+const even = () => {
+  // engine('Answer "yes" if number even otherwise answer "no".\n');
   console.log('Welcome to the Brain Games!');
   console.log('Answer "yes" if number even otherwise answer "no".\n');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!\n`);
 
-  const iter = (win) => {
-    if (win > threeTime) {
+  const iter = (countUserWins) => {
+    if (countUserWins > stopIfMore) {
       console.log(`Congratulations, ${name}!`);
       return;
     }
-    const number1 = generateNum();
-    const answer = readlineSync.question(`Question: ${number1} \nYour answer: `);
+    const randomNum = generateNum();
+    const userAnswer = readlineSync.question(`Question: ${randomNum} \nYour answer: `);
 
     const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
-    if (answer === isEven(number1)) {
+    if (userAnswer === isEven(randomNum)) {
       console.log('Correct!');
-      iter(win + 1);
+      iter(countUserWins + 1);
       return;
     }
-    console.log(`${answer} is wrong answer ;(. Correct answer was ${isEven(number1)}. \n`);
+    console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${isEven(randomNum)}. \n`);
     console.log(`Let's try again, ${name}!`);
   };
   iter(1);
 };
-
-export default userAnswer;
+export default even;
