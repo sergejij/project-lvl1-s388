@@ -1,5 +1,8 @@
 import readlineSync from 'readline-sync';
 
+const threeTime = 3;
+export const generateNum = () => Math.floor((Math.random() * (100 - 1)) + 1);
+
 export const userName = () => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -14,21 +17,21 @@ export const userAnswer = () => {
   console.log(`Hello, ${name}!\n`);
 
   const iter = (win) => {
-    const threeTime = 3;
     if (win > threeTime) {
       console.log(`Congratulations, ${name}!`);
       return;
     }
-    const numberQuestion = Math.floor((Math.random() * (100 - 1)) + 1);
-    const answer = readlineSync.question(`Question: ${numberQuestion} \nYour answer: `);
+    const number1 = generateNum();
+    const answer = readlineSync.question(`Question: ${number1} \nYour answer: `);
 
-    const correctAnswer = numberQuestion % 2 === 0 ? 'yes' : 'no';
-    if (answer === correctAnswer) {
+    const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
+    if (answer === isEven(number1)) {
       console.log('Correct!');
       iter(win + 1);
       return;
     }
-    console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}. \n Let's try again, ${name}!`);
+    console.log(`${answer} is wrong answer ;(. Correct answer was ${isEven(number1)}. \n`);
+    console.log(`Let's try again, ${name}!`);
   };
   iter(1);
 };
@@ -41,10 +44,9 @@ export const calculate = () => {
 
   const iter = (win) => {
     const numberOperand = Math.floor((Math.random() * (4 - 1)) + 1);
-    const number1 = Math.floor((Math.random() * (100 - 1)) + 1);
-    const number2 = Math.floor((Math.random() * (100 - 1)) + 1);
+    const number1 = generateNum();
+    const number2 = generateNum();
 
-    const threeTime = 3;
     if (win > threeTime) {
       console.log(`Congratulations, ${name}!`);
       return;
