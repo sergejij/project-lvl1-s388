@@ -1,41 +1,24 @@
-import readlineSync from 'readline-sync';
+import { engine } from '..';
 import generateNum from '../utils';
 
-const threeTime = 3;
-const nod = () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('Find the greatest common divisor of given numbers.\n');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!\n`);
+const nodGame = () => {
+  const description = 'Find the greatest common divisor of given numbers.\n';
 
-  const iter = (win) => {
-    if (win > threeTime) {
-      console.log(`Congratulations, ${name}!`);
-      return;
-    }
+  const issueGame = () => {
+    const randomNum1 = generateNum();
+    const randomNum2 = generateNum();
 
-    const number1 = generateNum();
-    const number2 = generateNum();
-
-    const correctAnswer = (num1, num2) => {
+    const strQuestion = String(`${randomNum1} ${randomNum2}`);
+    const funcCorrectAnswer = (num1, num2) => {
       if (num2 === 0) {
         return num1;
       }
-      return correctAnswer(num2, num1 % num2);
+      return funcCorrectAnswer(num2, num1 % num2);
     };
-
-
-    const userAnswer = readlineSync.question(`Question: ${number1} ${number2}\nYour answer: `);
-
-    if (Number.parseInt(userAnswer, 10) === correctAnswer(number1, number2)) {
-      console.log('Correct!');
-      iter(win + 1);
-      return;
-    }
-    console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer(number1, number2)}. \n`);
-    console.log(`Let's try again, ${name}!`);
+    const correctAnswer = Number.parseInt(funcCorrectAnswer(randomNum1, randomNum2), 10);
+    return { correctAnswer, strQuestion };
   };
-  iter(1);
+  engine(description, issueGame);
 };
 
-export default nod;
+export default nodGame;
