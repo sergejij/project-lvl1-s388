@@ -1,39 +1,39 @@
 import generateNum from '../utils';
 import { engine } from '..';
 
+const description = 'What is the result of the expression?\n';
+const issueGame = () => {
+  const randomNum1 = generateNum(1, 50);
+  const randomNum2 = generateNum(1, 50);
+
+  const plus = 1;
+  const minus = 2;
+  const multi = 3;
+
+  let correctAnswerInt;
+  let question;
+  const numberRandomOperand = generateNum(1, 4);
+
+  switch (numberRandomOperand) {
+    case plus:
+      correctAnswerInt = randomNum1 + randomNum2;
+      question = `${randomNum1} + ${randomNum2}`;
+      break;
+    case minus:
+      correctAnswerInt = randomNum1 - randomNum2;
+      question = `${randomNum1} - ${randomNum2}`;
+      break;
+    case multi:
+      correctAnswerInt = randomNum1 * randomNum2;
+      question = `${randomNum1} * ${randomNum2}`;
+      break;
+    default:
+      break;
+  }
+  const correctAnswer = String(correctAnswerInt);
+  return { correctAnswer, question };
+};
 const calcGame = () => {
-  const description = 'What is the result of the expression?\n';
-  const issueGame = () => {
-    let operator;
-    const numberRandomOperand = Math.floor((Math.random() * (4 - 1)) + 1);
-    if (numberRandomOperand === 1) {
-      operator = '+';
-    } else if (numberRandomOperand === 2) {
-      operator = '-';
-    } else {
-      operator = '*';
-    }
-    const randomNum1 = generateNum();
-    const randomNum2 = generateNum();
-
-    const strQuestion = String(randomNum1 + operator + randomNum2);
-
-    let correctAnswer;
-    switch (operator) {
-      case '+':
-        correctAnswer = randomNum1 + randomNum2;
-        break;
-      case '-':
-        correctAnswer = randomNum1 - randomNum2;
-        break;
-      case '*':
-        correctAnswer = randomNum1 * randomNum2;
-        break;
-      default:
-        break;
-    }
-    return { correctAnswer, strQuestion };
-  };
   engine(description, issueGame);
 };
 

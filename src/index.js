@@ -13,8 +13,8 @@ export const askName = () => {
   return userName;
 };
 
-export const answerUser = (strQuestion) => {
-  const answer = readlineSync.question(`Question: ${strQuestion}\nYour answer: `);
+export const answerUser = (question) => {
+  const answer = readlineSync.question(`Question: ${question}\nYour answer: `);
   return answer;
 };
 
@@ -23,21 +23,20 @@ export const engine = (description, issueGame) => {
   const userName = askName();
 
   const iter = (counterWins) => {
-    const { correctAnswer, strQuestion } = issueGame();
-    const userAnswer = answerUser(strQuestion);
-    if (String(correctAnswer) === userAnswer) {
+    if (counterWins === stopIfMore) {
+      console.log(`Congratulations, ${userName}!`);
+      return;
+    }
+    const { correctAnswer, question } = issueGame();
+    const userAnswer = answerUser(question);
+    if (correctAnswer === userAnswer) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
-
-    if (counterWins === stopIfMore) {
-      console.log(`Congratulations, ${userName}!`);
-      return;
-    }
     iter(counterWins + 1);
   };
-  iter(1);
+  iter(0);
 };
