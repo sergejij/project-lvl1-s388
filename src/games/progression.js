@@ -6,28 +6,28 @@ const issueGame = () => {
   let question = '';
   let correctAnswer;
 
-  const positionMissingNum = generateNum(2, 9);
+  const missingNumPosition = generateNum(2, 9);
   const insteadMissingNum = '..';
   const emptySpace = ' ';
 
   const firstCircleNum = 0;
-  const lastCircleNum = 10;
+  const length = 10;
   const firstProgressionNum = generateNum(5, 25);
-  const stepProgression = generateNum(1, 10);
+  const progressionStep = generateNum(1, 10);
 
   const iter = (countCircle, startNumber, step) => {
-    if (countCircle === lastCircleNum) {
+    if (countCircle === length) {
       return { correctAnswer, question };
     }
-    if (countCircle === positionMissingNum) {
+    if (countCircle === missingNumPosition) {
       correctAnswer = String(startNumber);
-      question += `${insteadMissingNum} ${emptySpace}`;
+      question += `${insteadMissingNum}${emptySpace}`;
       return iter(countCircle + 1, startNumber + step, step);
     }
     question += startNumber + emptySpace;
     return iter(countCircle + 1, startNumber + step, step);
   };
-  return iter(firstCircleNum, firstProgressionNum, stepProgression);
+  return iter(firstCircleNum, firstProgressionNum, progressionStep);
 };
 
 export default () => engine(description, issueGame);
