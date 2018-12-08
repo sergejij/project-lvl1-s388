@@ -21,3 +21,6 @@ calc:
 
 prog:
 	npx babel-node -- src/bin/brain-progress.js
+
+prime:
+	npx babel-node -- src/bin/brain-prime.js

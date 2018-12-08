@@ -2,23 +2,23 @@ import readlineSync from 'readline-sync';
 
 const stopIfMore = 3;
 
-export const firstGreeting = (description) => {
+const firstGreeting = (description) => {
   console.log('Welcome to Brain Games!');
-  console.log(description);
+  console.log(`${description} \n`);
 };
 
-export const askName = () => {
+const askName = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!\n`);
   return userName;
 };
 
-export const answerUser = (question) => {
+const answerUser = (question) => {
   const answer = readlineSync.question(`Question: ${question}\nYour answer: `);
   return answer;
 };
 
-export const engine = (description, issueGame) => {
+const engine = (description, issueGame) => {
   firstGreeting(description);
   const userName = askName();
 
@@ -40,3 +40,5 @@ export const engine = (description, issueGame) => {
   };
   iter(0);
 };
+
+export default engine;
