@@ -2,32 +2,26 @@ import generateNum from '../utils';
 import engine from '..';
 
 const description = 'What number is missing in the progression?';
+const length = 10;
+
 const issueGame = () => {
   let question = '';
-  let correctAnswer;
-
-  const missingNumPosition = generateNum(2, 9);
-  const insteadMissingNum = '..';
+  const numberFirstLoop = 0;
+  const insteadMissingNum = '.. ';
   const emptySpace = ' ';
-
-  const firstCircleNum = 0;
-  const length = 10;
+  const missingNumPosition = generateNum(numberFirstLoop, length);
   const firstProgressionNum = generateNum(5, 25);
   const progressionStep = generateNum(1, 10);
 
-  const iter = (countCircle, startNumber, step) => {
-    if (countCircle === length) {
-      return { correctAnswer, question };
+  for (let i = 0; i < length; i += 1) {
+    if (i !== missingNumPosition) {
+      question += (firstProgressionNum + progressionStep * i) + emptySpace;
+    } else {
+      question += insteadMissingNum;
     }
-    if (countCircle === missingNumPosition) {
-      correctAnswer = String(startNumber);
-      question += `${insteadMissingNum}${emptySpace}`;
-      return iter(countCircle + 1, startNumber + step, step);
-    }
-    question += startNumber + emptySpace;
-    return iter(countCircle + 1, startNumber + step, step);
-  };
-  return iter(firstCircleNum, firstProgressionNum, progressionStep);
+  }
+  const correctAnswer = String(firstProgressionNum + progressionStep * missingNumPosition);
+  return { correctAnswer, question };
 };
 
 export default () => engine(description, issueGame);
